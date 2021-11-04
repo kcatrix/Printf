@@ -6,7 +6,7 @@
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 14:33:04 by kevyn             #+#    #+#             */
-/*   Updated: 2021/11/04 15:27:43 by kevyn            ###   ########.fr       */
+/*   Updated: 2021/11/04 16:41:42 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,23 @@ int	ft_printf(const char *arg, ...)
 	int i;
 	va_list ap;
 	t_list *s_list;
-	
+	//char	*s;
+
+	//s = arg;	
+	i = 0;
 	va_start(ap, arg);
-	printf("%lu", strlen(arg));
+	while (arg[i])
+	{	
+		if (arg[i] == '%')
+			i++;
+	}
+	printf("%c\n", arg[i]);
 	va_end(ap);
 }
 int main(int argc, char **argv)
 {
-	argc = 1;
-	ft_printf(*argv);
+	int i;
+
+	i = 1;
+	ft_printf(argv[i]);
 }
