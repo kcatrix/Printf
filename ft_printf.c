@@ -3,37 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 14:33:04 by kevyn             #+#    #+#             */
-/*   Updated: 2021/11/04 16:41:42 by kevyn            ###   ########.fr       */
+/*   Updated: 2021/11/05 15:21:54 by kcatrix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_printf(const char *arg, ...)
 {
 	int i;
+	int len;
 	va_list ap;
-	t_list *s_list;
-	//char	*s;
-
-	//s = arg;	
+	char	*param;
+	
+	len = 0;
 	i = 0;
 	va_start(ap, arg);
+	param = va_arg(ap, void *);
+	if (!arg)
+		write (1, "(null)", 6);
 	while (arg[i])
 	{	
-		if (arg[i] == '%')
+		if (arg[i] == '%' && arg[i + 1] != '%')
+		{
+			len += ft_convert((char)arg[i + 1], param);
 			i++;
+		}
+		else if (arg[i] == '%' && arg[i + 1] == '%')
+		{
+			i++;
+			write(1, "%", 1);
+			len++;
+		}
+		else
+		{
+			ft_putchar(arg[i]);
+			len++;
+		}
+		i++;
 	}
 	printf("%c\n", arg[i]);
+	printf("%d\n", len);
 	va_end(ap);
+	return (len);
 }
-int main(int argc, char **argv)
+int main()
 {
-	int i;
-
-	i = 1;
-	ft_printf(argv[i]);
+	ft_printf("%d", 18);
+	printf("%d", 18);
 }
