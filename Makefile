@@ -1,7 +1,7 @@
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 NAME 	= libftprintf.a
-SRC		= ft_printf.c ft_convert.c ft_putchar.c ft_putstr.c
+SRC		= ft_printf.c ft_convert.c ft_putchar.c ft_putstr.c ft_putnbr.c
 LIB = ft
 LIB_DIR = ../Libft/
 

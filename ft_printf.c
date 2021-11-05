@@ -6,7 +6,7 @@
 /*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 14:33:04 by kevyn             #+#    #+#             */
-/*   Updated: 2021/11/05 15:21:54 by kcatrix          ###   ########.fr       */
+/*   Updated: 2021/11/05 16:39:11 by kcatrix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,4 @@ int	ft_printf(const char *arg, ...)
 	va_end(ap);
 	return (len);
 }
-int main()
-{
-	ft_printf("%d", 18);
-	printf("%d", 18);
-}
+
