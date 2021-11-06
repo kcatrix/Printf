@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 13:26:55 by kcatrix           #+#    #+#             */
-/*   Updated: 2021/11/05 15:03:13 by kcatrix          ###   ########.fr       */
+/*   Updated: 2021/11/06 20:15:35 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@ int	ft_putstr(char *str)
 	int	i;
 	
 	i = 0;
+	if (!str)
+	{
+		write (1, "(null)", 6);
+		i = i + 6;
+	}
 	while (str[i] != '\0')
 	{
 		write(1, &str[i], 1);

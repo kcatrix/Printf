@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
+/*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 14:33:04 by kevyn             #+#    #+#             */
-/*   Updated: 2021/11/05 16:39:11 by kcatrix          ###   ########.fr       */
+/*   Updated: 2021/11/06 20:22:14 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,18 @@
 
 int	ft_printf(const char *arg, ...)
 {
-	int i;
-	int len;
+	int 	i;
+	int 	len;
 	va_list ap;
-	char	*param;
 	
 	len = 0;
 	i = 0;
 	va_start(ap, arg);
-	param = va_arg(ap, void *);
-	if (!arg)
-		write (1, "(null)", 6);
 	while (arg[i])
 	{	
 		if (arg[i] == '%' && arg[i + 1] != '%')
 		{
-			len += ft_convert((char)arg[i + 1], param);
+			len += ft_convert((char)arg[i + 1], va_arg(ap, void *));
 			i++;
 		}
 		else if (arg[i] == '%' && arg[i + 1] == '%')
