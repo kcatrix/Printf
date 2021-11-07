@@ -1,48 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putnbrh.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 14:33:04 by kevyn             #+#    #+#             */
-/*   Updated: 2021/11/07 18:26:51 by kevyn            ###   ########.fr       */
+/*   Created: 2021/11/07 17:55:32 by kevyn             #+#    #+#             */
+/*   Updated: 2021/11/07 17:58:02 by kevyn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_printf(const char *arg, ...)
+int	ft_putnbrh(int nb)
 {
+	char	c;
 	int		i;
-	int		len;
-	va_list	ap;
 
-	len = 0;
 	i = 0;
-	va_start(ap, arg);
-	while (arg[i])
-	{	
-		if (arg[i] == '%' && arg[i + 1] != '%')
-		{
-			len += ft_convert((char)arg[i + 1], va_arg(ap, void *));
-			i++;
-		}
-		else if (arg[i] == '%' && arg[i + 1] == '%')
-		{
-			i++;
-			write(1, "%", 1);
-			len++;
-		}
-		else
-		{
-			ft_putchar(arg[i]);
-			len++;
-		}
+	if (nb == -2147483648)
+	{
+		write(1, "-2147483648", 11);
+		i += 11;
+	}
+	if ((nb < 0) && (nb != -2147483648))
+	{
+		write(1, "-", 1);
+		i++;
+		nb = nb * -1;
+	}
+	if (nb >= 0 && nb <= 9)
+	{
+		c = nb + '0';
+		write(1, &c, 1);
 		i++;
 	}
-	printf("%c\n", arg[i]);
-	printf("%d\n", len);
-	va_end(ap);
-	return (len);
+	if (nb > 9)
+	{
+		i += ft_putnbr(nb / 16);
+		i += ft_putnbr(nb % 16);
+	}
+	return (i);
 }

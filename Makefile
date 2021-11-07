@@ -1,7 +1,21 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/11/07 17:47:21 by kevyn             #+#    #+#              #
+#    Updated: 2021/11/07 17:57:32 by kevyn            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 NAME 	= libftprintf.a
-SRC		= ft_printf.c ft_convert.c ft_putchar.c ft_putstr.c ft_putnbr.c
+SRC		= ft_printf.c ft_convert.c ft_putchar.c ft_putstr.c ft_putnbr.c \
+			ft_putnbru.c ft_putnbrh.c
 LIB = ft
 LIB_DIR = ../Libft/
 
