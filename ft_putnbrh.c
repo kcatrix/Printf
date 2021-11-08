@@ -3,42 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbrh.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: kevyn <kevyn@student.42.fr>                +#+  +:+       +#+        */
+/*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/07 17:55:32 by kevyn             #+#    #+#             */
-/*   Updated: 2021/11/07 17:58:02 by kevyn            ###   ########.fr       */
+/*   Updated: 2021/11/08 11:04:52 by kcatrix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbrh(int nb)
+unsigned int	ft_putnbrh(unsigned long int nb, char	*base)
 {
 	char	c;
 	int		i;
 
 	i = 0;
-	if (nb == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		i += 11;
-	}
-	if ((nb < 0) && (nb != -2147483648))
-	{
-		write(1, "-", 1);
-		i++;
-		nb = nb * -1;
-	}
-	if (nb >= 0 && nb <= 9)
+	if (nb >= 0 && nb <= 15)
 	{
 		c = nb + '0';
-		write(1, &c, 1);
+		write(1, &base[nb], 1);
 		i++;
 	}
-	if (nb > 9)
+	if (nb > 15)
 	{
-		i += ft_putnbr(nb / 16);
-		i += ft_putnbr(nb % 16);
+		i += ft_putnbrh(nb / 16, base);
+		i += ft_putnbrh(nb % 16, base);
 	}
 	return (i);
 }
