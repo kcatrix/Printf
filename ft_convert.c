@@ -6,7 +6,7 @@
 /*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 09:13:26 by kcatrix           #+#    #+#             */
-/*   Updated: 2021/11/08 11:12:15 by kcatrix          ###   ########.fr       */
+/*   Updated: 2021/11/08 13:32:45 by kcatrix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_convert(char arg, void *param)
 {
-	int i;
-	
+	int	i;
+
 	i = 0;
 	if ((int)arg == 'c')
 		i += ft_putchar((char)param);

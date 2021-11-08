@@ -6,7 +6,7 @@
 /*   By: kcatrix <kcatrix@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 15:13:27 by kcatrix           #+#    #+#             */
-/*   Updated: 2021/11/05 16:23:33 by kcatrix          ###   ########.fr       */
+/*   Updated: 2021/11/08 13:49:08 by kcatrix          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,6 @@ int	ft_putnbr(int nb)
 		i++;
 	}
 	if (nb > 9)
-	{
-		i += ft_putnbr(nb / 10);
-		i += ft_putnbr(nb % 10);
-	}
+		i += ft_putnbr(nb / 10) + ft_putnbr(nb % 10);
 	return (i);
 }
